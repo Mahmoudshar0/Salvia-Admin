@@ -3,6 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import FixedSidebar from "../../Components/FixedSidebar";
 import Delete from "../../Components/Delete";
 import { useNavigate } from "react-router-dom";
+import { base_url } from "../../utils/Domain";
 
 function About() {
   const navigate = useNavigate();
