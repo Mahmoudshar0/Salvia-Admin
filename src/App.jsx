@@ -5,6 +5,8 @@ import About from "./Pages/About-us/About";
 import Preview from "./Pages/About-us/Preview";
 import Quality from "./Pages/Our-Quality-Commitment/Quality";
 import QualityPreview from "./Pages/Our-Quality-Commitment/Preview";
+import RnD from "./Pages/R&D/R&D";
+import RnDPreview from "./Pages/R&D/Preview";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             path="/quality-preview/:blockId"
             element={<QualityPreview />}
           />
+          <Route path="/r-and-d" element={<RnD />} />
+          <Route path="/r-and-d-preview/:blockId" element={<RnDPreview />} />
         </Routes>
       </Router>
     </>
