@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import FixedSidebar from "../../Components/FixedSidebar";
-import Delete from "../../Components/Delete";
 import { useNavigate } from "react-router-dom";
 
 function RAndD() {
   const navigate = useNavigate();
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [selectedBlock, setSelectedBlock] = useState(null);
 
   const [pageData, setPageData] = useState({
     pageTitle: "Research & Development",
@@ -71,23 +68,6 @@ function RAndD() {
     navigate(`/r-and-d-preview/${blockId}`);
   };
 
-  const handleDeleteConfirm = () => {
-    if (selectedBlock) {
-      setPageData({
-        ...pageData,
-        contentBlocks: pageData.contentBlocks.filter(
-          (block) => block.id !== selectedBlock.id
-        ),
-      });
-      setDeleteModalOpen(false);
-    }
-  };
-
-  const handleDeleteCancel = () => {
-    setDeleteModalOpen(false);
-    setSelectedBlock(null);
-  };
-
   return (
     <div className="flex">
       <FixedSidebar />
@@ -140,12 +120,6 @@ function RAndD() {
           ))}
         </div>
       </div>
-
-      <Delete
-        isOpen={deleteModalOpen}
-        onClose={handleDeleteCancel}
-        onConfirm={handleDeleteConfirm}
-      />
     </div>
   );
 }

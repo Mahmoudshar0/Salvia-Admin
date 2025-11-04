@@ -6,7 +6,6 @@ function Preview() {
   const navigate = useNavigate();
   const { blockId } = useParams();
 
-  // Mock data - In production, this will come from API
   const allBlocksData = {
     1: {
       sectionTitle: "Food Safety & Compliance",
@@ -50,7 +49,6 @@ function Preview() {
     description: "",
   });
 
-  // Load data based on blockId
   useEffect(() => {
     const blockData = allBlocksData[blockId];
     if (blockData) {
@@ -59,31 +57,7 @@ function Preview() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockId]);
 
-  // TODO: Fetch data from API - uncomment when API is ready
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`YOUR_API_ENDPOINT_HERE/${blockId}`);
-  //       setSectionData(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [blockId]);
-
   const handleSave = () => {
-    // TODO: Save data to API
-    // const saveData = async () => {
-    //   try {
-    //     await axios.put(`YOUR_API_ENDPOINT_HERE/${blockId}`, sectionData);
-    //     alert('Changes saved successfully!');
-    //     navigate('/our-quality');
-    //   } catch (error) {
-    //     console.error('Error saving data:', error);
-    //   }
-    // };
-    // saveData();
     console.log("Saving data:", sectionData);
     navigate("/our-quality");
   };
@@ -94,15 +68,11 @@ function Preview() {
 
   return (
     <div className="flex">
-      {/* Fixed Sidebar */}
       <FixedSidebar />
 
-      {/* Main content area with margin for sidebar */}
       <div className="flex-1 ml-[260px] bg-gray-100 min-h-screen p-14">
-        {/* Preview Title */}
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Preview</h1>
 
-        {/* Section Title */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">
             Section tittle
@@ -118,7 +88,6 @@ function Preview() {
           />
         </div>
 
-        {/* Description */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">tittle</h2>
           <textarea
@@ -132,7 +101,6 @@ function Preview() {
           />
         </div>
 
-        {/* Action Buttons */}
         <div className="flex gap-4 mt-12 justify-center">
           <button
             onClick={handleSave}
