@@ -19,7 +19,7 @@ function FixedSidebar({ isOpen, onClose }) {
     { to: "/r-and-d", label: "R&D", icon: <ImLab /> },
     { to: "/gallary", label: "Gallery", icon: <TbPhotoCog /> },
     { to: "/events", label: "Events", icon: <LuNewspaper /> },
-    { to: "/contact", label: "Contact Us", icon: <TbMessage /> },
+    { to: "/contact-us", label: "Contact Us", icon: <TbMessage /> },
     { to: "/certificates", label: "Certificates", icon: <PiCertificate /> },
     { to: "/page9", label: "Page 9", icon: <PiPlantLight /> },
     { to: "/page10", label: "Page 10", icon: <PiPlantLight /> },
