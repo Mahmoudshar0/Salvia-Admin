@@ -4,8 +4,9 @@ import Home from "./Pages/Home/Home";
 import About from "./Pages/About-us/About";
 import Preview from "./Pages/About-us/Preview";
 import Product from "./Pages/Products/Product";
-
-
+import AddProduct from "./Pages/Products/AddProduct";
+import DetailsProduct from "./Pages/Products/DetailsProduct";
+import EditProduct from "./Pages/Products/EditProduct";
 import Quality from "./Pages/Our-Quality-Commitment/Quality";
 import QualityPreview from "./Pages/Our-Quality-Commitment/Preview";
 import RnD from "./Pages/R&D/R&D";
@@ -31,8 +32,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/preview/:blockId" element={<Preview />} />
           <Route path="/products" element={<Product />} />
-
-
+          <Route path="/products/add" element={<AddProduct />} />
+          <Route path="/products/details/:id" element={<DetailsProduct />} />
+          <Route path="/products/edit/:id" element={<EditProduct />} />
           <Route path="/our-quality" element={<Quality />} />
           <Route
             path="/quality-preview/:blockId"
