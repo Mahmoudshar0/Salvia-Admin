@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import FixedSidebar from "../../Components/FixedSidebar";
 import skyVideo from "../../assets/videos/sky.mp4";
-import soilImage from "../../assets/Images/Soil.png";
+import soilImage from "../../assets/Images/soil.png";
 import seedsImage from "../../assets/Images/seeds.png";
 import leavesImage from "../../assets/Images/dried-leaves.png";
 import flowersImage from "../../assets/Images/dried-flowers.png";
