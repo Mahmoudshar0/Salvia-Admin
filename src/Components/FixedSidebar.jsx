@@ -1,14 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PiPlantLight, PiCertificate } from "react-icons/pi";
 import { TbMessage, TbPhotoCog } from "react-icons/tb";
 import { LuNewspaper } from "react-icons/lu";
 import { ImLab } from "react-icons/im";
 import { BsBoxSeam } from "react-icons/bs";
+import { MdLogout } from "react-icons/md";
 import logoImage from "../assets/Images/logo.png";
 import accountImage from "../assets/Images/account.png";
 
 function FixedSidebar({ isOpen, onClose }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const sidebarOpen = typeof isOpen === "undefined" ? true : isOpen;
 
@@ -69,16 +71,29 @@ function FixedSidebar({ isOpen, onClose }) {
             ))}
           </ul>
 
-          <div className="flex items-center flex-col md:flex-row gap-2 mt-4">
-            <img
-              src={accountImage}
-              alt="Profile Picture"
-              className="rounded-full object-cover"
-            />
-            <div>
-              <p className="text-sm font-semibold">Mohamed Mohamady</p>
-              <p className="text-xs text-gray-300">mohamed@gmail.com</p>
+          <div className="mt-4">
+            <div className="flex items-center flex-col md:flex-row gap-2 mb-3">
+              <img
+                src={accountImage}
+                alt="Profile Picture"
+                className="rounded-full object-cover"
+              />
+              <div>
+                <p className="text-sm font-semibold">Mohamed Mohamady</p>
+                <p className="text-xs text-gray-300">mohamed@gmail.com</p>
+              </div>
             </div>
+            <button
+              onClick={() => {
+                localStorage.removeItem("token");
+                navigate("/login");
+                if (onClose) onClose();
+              }}
+              className="flex items-center gap-2 w-full px-2 py-2 text-sm font-bold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+            >
+              <MdLogout className="text-xl" />
+              <span>Logout</span>
+            </button>
           </div>
         </div>
       </div>

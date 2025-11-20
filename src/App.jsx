@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About-us/About";
 import Preview from "./Pages/About-us/Preview";
@@ -24,37 +29,185 @@ import Page10 from "./Pages/Page-10/Page10";
 import Login from "./Pages/Login";
 import { Toaster } from "./components/ui/sonner";
 
+// Protected Route Component
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
 function App() {
   return (
     <>
       <Toaster />
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/preview/:blockId" element={<Preview />} />
-          <Route path="/products" element={<Product />} />
-          <Route path="/add-product" element={<AddProduct />} />
-          <Route path="/edit-product/:productId" element={<EditProduct />} />
-
           <Route path="/login" element={<Login />} />
-          <Route path="/our-quality" element={<Quality />} />
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/preview/:blockId"
+            element={
+              <ProtectedRoute>
+                <Preview />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <ProtectedRoute>
+                <Product />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-product"
+            element={
+              <ProtectedRoute>
+                <AddProduct />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-product/:productId"
+            element={
+              <ProtectedRoute>
+                <EditProduct />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/our-quality"
+            element={
+              <ProtectedRoute>
+                <Quality />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/quality-preview/:sectionId/:sectionName"
-            element={<QualityPreview />}
+            element={
+              <ProtectedRoute>
+                <QualityPreview />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/r-and-d" element={<RnD />} />
-          <Route path="/r-and-d-preview/:blockId" element={<RnDPreview />} />
-          <Route path="/gallary" element={<Gallary />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/add-event" element={<AddEvent />} />
-          <Route path="/edit-event/:id" element={<EditEvent />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/certificates" element={<Certificate />} />
-          <Route path="/add-certificate" element={<AddCertificate />} />
-          <Route path="/edit-certificate/:id" element={<EditCertificate />} />
-          <Route path="/page9" element={<Page9 />} />
-          <Route path="/page10" element={<Page10 />} />
+          <Route
+            path="/r-and-d"
+            element={
+              <ProtectedRoute>
+                <RnD />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/r-and-d-preview/:blockId"
+            element={
+              <ProtectedRoute>
+                <RnDPreview />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/gallary"
+            element={
+              <ProtectedRoute>
+                <Gallary />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/events"
+            element={
+              <ProtectedRoute>
+                <Events />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-event"
+            element={
+              <ProtectedRoute>
+                <AddEvent />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-event/:id"
+            element={
+              <ProtectedRoute>
+                <EditEvent />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/contact-us"
+            element={
+              <ProtectedRoute>
+                <Contact />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/certificates"
+            element={
+              <ProtectedRoute>
+                <Certificate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-certificate"
+            element={
+              <ProtectedRoute>
+                <AddCertificate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-certificate/:id"
+            element={
+              <ProtectedRoute>
+                <EditCertificate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/page9"
+            element={
+              <ProtectedRoute>
+                <Page9 />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/page10"
+            element={
+              <ProtectedRoute>
+                <Page10 />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </>
