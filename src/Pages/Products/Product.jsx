@@ -16,6 +16,25 @@ export default function Product() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.updatedProduct) {
+      const updated = location.state.updatedProduct;
+      setProducts((prev) =>
+        prev.map((p) =>
+          p.id === updated.id
+            ? {
+                ...p,
+                name: updated.productName,
+                description: updated.description,
+                image: updated.productImage,
+              }
+            : p
+        )
+      );
+    }
+  }, [location.state]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -148,7 +167,7 @@ export default function Product() {
               key={product._id}
               className="relative group bg-white rounded-3xl shadow-md overflow-hidden flex flex-col items-center border border-gray-200 hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
             >
-              <div className="absolute top-3 right-3 flex gap-2 transition-opacity">
+              <div className="absolute top-3 right-3 flex gap-2">
                 <button
                   onClick={() => handleEditProduct(product._id)}
                   className="bg-[#4E6347] hover:bg-[#3a5230] rounded-full p-2 transition-colors"
@@ -157,7 +176,7 @@ export default function Product() {
                 </button>
                 <button
                   onClick={() => openDeleteModal(product)}
-                  className="bg-[#4E6347] hover:bg-[#3a5230] rounded-full p-2 transition-colors"
+                  className="bg-[#4E6347] hover:bg-[#3a5230] rounded-full p-2"
                 >
                   <RiDeleteBin6Line className="text-md text-white cursor-pointer" />
                 </button>
@@ -187,12 +206,7 @@ export default function Product() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500">
-              No products found. Try a different search term or add a new
-              product.
-            </p>
-          </div>
+          <div className="text-center py-12 text-gray-500">No products found.</div>
         )}
       </div>
 
